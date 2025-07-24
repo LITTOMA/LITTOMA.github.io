@@ -1,0 +1,34 @@
+{
+    "works": [
+        {
+            "name": "Avalonia.MarkdownViewer",
+            "desc": "Avalonia UI 用の Markdown レンダリングコントロール。",
+            "link": "https://github.com/LITTOMA/Avalonia.MarkdownViewer"
+        },
+        {
+            "name": "ModbusParser",
+            "desc": "Modbus プロトコルデータ解析ツール。",
+            "link": "https://github.com/LITTOMA/ModbusParser"
+        },
+        {
+            "name": "RadialGauge",
+            "desc": "高性能な円形ゲージコントロール。マルチプラットフォーム対応。",
+            "link": "https://github.com/LITTOMA/RadialGauge"
+        },
+        {
+            "name": "WinFormsMarkup",
+            "desc": "WinForms UI の宣言型マークアップ拡張ライブラリ。",
+            "link": "https://github.com/LITTOMA/WinFormsMarkup"
+        },
+        {
+            "name": "SwiftIO",
+            "desc": "C# System.IOスタイルを模倣したSwift言語のツールライブラリ。",
+            "link": "https://github.com/LITTOMA/SwiftIO"
+        },
+        {
+            "name": "fabrc",
+            "desc": "ポケモンアートアカデミーのFabリソースを解析するスクリプト。",
+            "link": "https://github.com/LITTOMA/fabrc"
+        }
+    ]
+}

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LITTOMA 的个人主页</title>
+    <style>
+        :root {
+            --bg-light: #f7f8fa;
+            --bg-dark: #181a1b;
+            --container-light: #fff;
+            --container-dark: #23272f;
+            --text-light: #222;
+            --text-dark: #e3eaf2;
+            --primary: #2a7ae2;
+            --primary-dark: #6ca0f6;
+            --card-light: #f4f6fb;
+            --card-dark: #23272f;
+            --border-light: #e3eaf2;
+            --border-dark: #444b5a;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        .container {
+            background: var(--container-light);
+            color: var(--text-light);
+        }
+
+        #lang-select,
+        .work-card {
+            background: var(--card-light);
+            color: var(--primary);
+            border-color: var(--border-light);
+        }
+
+        .work-card {
+            color: var(--text-light);
+        }
+
+        .section-title {
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .contact a {
+            color: var(--primary);
+        }
+
+        .lang-select-wrapper::after {
+            color: var(--primary);
+        }
+
+        /* 暗色模式 */
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .container.dark {
+            background: var(--container-dark);
+            color: var(--text-dark);
+        }
+
+        #lang-select.dark,
+        .work-card.dark {
+            background: var(--card-dark);
+            color: var(--primary-dark);
+            border-color: var(--border-dark);
+        }
+
+        .work-card.dark {
+            color: var(--text-dark);
+        }
+
+        .section-title.dark {
+            color: var(--primary-dark);
+            border-left-color: var(--primary-dark);
+        }
+
+        .contact a.dark {
+            color: var(--primary-dark);
+        }
+
+        .lang-select-wrapper.dark::after {
+            color: var(--primary-dark);
+        }
+
+        /* 美化语言选择下拉菜单 */
+        .lang-select-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        #lang-select {
+            padding: 6px 32px 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #2a7ae2;
+            background: #f4f6fb;
+            color: #2a7ae2;
+            font-size: 1em;
+            font-weight: bold;
+            outline: none;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            box-shadow: 0 2px 8px rgba(42, 122, 226, 0.08);
+        }
+
+        #lang-select:focus {
+            border-color: #1a4e9e;
+        }
+
+        .lang-select-wrapper::after {
+            content: '\25BC';
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2a7ae2;
+            pointer-events: none;
+            font-size: 0.9em;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f8fa;
+            margin: 0;
+            padding: 0;
+            color: #222;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            padding: 32px 24px;
+        }
+
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: block;
+            margin: 0 auto 16px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #2a7ae2;
+            margin-bottom: 12px;
+            border-left: 4px solid #2a7ae2;
+            padding-left: 8px;
+        }
+
+        #works-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            min-height: 48px;
+            color: #888;
+        }
+
+        .work-card {
+            background: #f4f6fb;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(42, 122, 226, 0.08);
+            padding: 20px 18px;
+            min-width: 220px;
+            max-width: 320px;
+            flex: 1 1 220px;
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border: 1px solid #e3eaf2;
+        }
+
+        .work-card:hover {
+            box-shadow: 0 6px 24px rgba(42, 122, 226, 0.18);
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        .work-title {
+            font-size: 1.08em;
+            font-weight: bold;
+            color: #2a7ae2;
+            margin-bottom: 6px;
+        }
+
+        .work-desc {
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            color: #2a7ae2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <div class="lang-select-wrapper">
+                <select id="lang-select">
+                    <option value="zh">🇨🇳 中文</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                </select>
+            </div>
+            <button id="theme-toggle"
+                style="margin-left:16px; padding:6px 16px; border-radius:20px; border:1px solid var(--border-light); background:var(--card-light); color:var(--primary); font-weight:bold; cursor:pointer; transition:background 0.2s, color 0.2s;">🌙
+                暗色</button>
+        </div>
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/10324313?v=4" alt="LITTOMA头像">
+        <h1 id="name-title">LITTOMA</h1>
+        <div class="intro" id="bio">My intro</div>
+        <div class="section">
+            <div class="section-title" id="works-title">个人作品</div>
+            <div id="works-list">暂无作品展示</div>
+        </div>
+        <div class="section contact">
+            <div class="section-title" id="contact-title">联系方式</div>
+            <a id="contact-link" href="https://github.com/LITTOMA" target="_blank">github.com/LITTOMA</a>
+        </div>
+    </div>
+    <script>
+        // 主题切换相关
+        function setTheme(mode) {
+            document.body.classList.toggle('dark', mode === 'dark');
+            document.querySelector('.container').classList.toggle('dark', mode === 'dark');
+            document.getElementById('lang-select').classList.toggle('dark', mode === 'dark');
+            document.querySelectorAll('.work-card').forEach(card => card.classList.toggle('dark', mode === 'dark'));
+            document.querySelectorAll('.section-title').forEach(el => el.classList.toggle('dark', mode === 'dark'));
+            document.querySelectorAll('.contact a').forEach(el => el.classList.toggle('dark', mode === 'dark'));
+            document.querySelector('.lang-select-wrapper').classList.toggle('dark', mode === 'dark');
+            document.getElementById('theme-toggle').textContent = mode === 'dark' ? '☀️' : '🌙';
+        }
+
+        // 检测系统主题
+        function getSystemTheme() {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // 初始化主题
+        let currentTheme = getSystemTheme();
+        setTheme(currentTheme);
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            currentTheme = e.matches ? 'dark' : 'light';
+            setTheme(currentTheme);
+        });
+
+        // 手动切换主题
+        document.getElementById('theme-toggle').onclick = function () {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(currentTheme);
+        };
+        // 多语言文本
+        const i18n = {
+            zh: {
+                name: 'LITTOMA',
+                worksTitle: '个人作品',
+                worksEmpty: '暂无作品展示',
+                contactTitle: '联系方式',
+                contactLink: 'github.com/LITTOMA',
+                bioFallback: 'C/C++, C#, Python程序员。视频游戏本地化。'
+            },
+            en: {
+                name: 'LITTOMA',
+                worksTitle: 'Projects',
+                worksEmpty: 'No projects to show',
+                contactTitle: 'Contact',
+                contactLink: 'github.com/LITTOMA',
+                bioFallback: 'C/C++, C#, Python programmer. Video game localization.'
+            },
+            fr: {
+                name: 'LITTOMA',
+                worksTitle: 'Projets',
+                worksEmpty: 'Aucun projet à afficher',
+                contactTitle: 'Contact',
+                contactLink: 'github.com/LITTOMA',
+                bioFallback: 'Programmeur C/C++, C#, Python. Localisation de jeux vidéo.'
+            },
+            ja: {
+                name: 'LITTOMA',
+                worksTitle: '作品',
+                worksEmpty: '表示できる作品はありません',
+                contactTitle: '連絡先',
+                contactLink: 'github.com/LITTOMA',
+                bioFallback: 'C/C++, C#, Pythonプログラマー。ゲームローカライズ。'
+            }
+        };
+
+        let currentLang = 'zh';
+        const langSelect = document.getElementById('lang-select');
+        langSelect.value = currentLang;
+        langSelect.onchange = function () {
+            currentLang = this.value;
+            renderLang();
+            renderWorks();
+        };
+
+        function renderLang() {
+            const t = i18n[currentLang];
+            document.getElementById('name-title').textContent = t.name;
+            document.getElementById('works-title').textContent = t.worksTitle;
+            document.getElementById('contact-title').textContent = t.contactTitle;
+            document.getElementById('contact-link').textContent = t.contactLink;
+        }
+
+        // 自动获取GitHub头像和简介
+        let githubBio = '';
+        fetch('https://api.github.com/users/LITTOMA')
+            .then(res => res.json())
+            .then(data => {
+                if (data.avatar_url) {
+                    document.querySelector('.avatar').src = data.avatar_url;
+                }
+                if (data.bio) {
+                    githubBio = data.bio;
+                    document.getElementById('bio').textContent = githubBio;
+                } else {
+                    document.getElementById('bio').textContent = i18n[currentLang].bioFallback;
+                }
+            });
+
+        // 作品卡片式展示，点击卡片跳转。每种语言单独一个 works.[lang].json 文件
+        let worksData = null;
+        function loadWorks(lang) {
+            fetch(`works.${lang}.json`)
+                .then(res => res.ok ? res.json() : null)
+                .then(data => {
+                    if (data && Array.isArray(data.works)) {
+                        worksData = data;
+                        renderWorks();
+                    } else {
+                        // fallback to works.json
+                        fetch('works.json')
+                            .then(res2 => res2.ok ? res2.json() : null)
+                            .then(data2 => {
+                                worksData = data2;
+                                renderWorks();
+                            });
+                    }
+                });
+        }
+
+        function renderWorks() {
+            const list = document.getElementById('works-list');
+            list.innerHTML = '';
+            if (!worksData || !Array.isArray(worksData.works) || worksData.works.length === 0) {
+                list.textContent = i18n[currentLang].worksEmpty;
+                return;
+            }
+            worksData.works.forEach(work => {
+                const card = document.createElement('div');
+                card.className = 'work-card';
+                card.tabIndex = 0;
+                card.innerHTML = `
+                    <div class='work-title'>${work.name}</div>
+                    <div class='work-desc'>${work.desc}</div>
+                `;
+                if (work.link) {
+                    card.onclick = () => window.open(work.link, '_blank');
+                    card.onkeydown = e => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            window.open(work.link, '_blank');
+                        }
+                    };
+                }
+                list.appendChild(card);
+            });
+        }
+
+        // 初始加载中文作品
+        loadWorks(currentLang);
+
+        // 切换语言时重新加载作品
+        langSelect.onchange = function () {
+            currentLang = this.value;
+            renderLang();
+            loadWorks(currentLang);
+        };
+
+        renderLang();
+    </script>
+</body>
+
+</html>

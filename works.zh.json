@@ -1,0 +1,34 @@
+{
+    "works": [
+        {
+            "name": "Avalonia.MarkdownViewer",
+            "desc": "Avalonia UI 的 Markdown 渲染控件。",
+            "link": "https://github.com/LITTOMA/Avalonia.MarkdownViewer"
+        },
+        {
+            "name": "ModbusParser",
+            "desc": "Modbus 协议数据解析与分析工具。",
+            "link": "https://github.com/LITTOMA/ModbusParser"
+        },
+        {
+            "name": "RadialGauge",
+            "desc": "高性能圆形仪表盘控件，支持多平台。",
+            "link": "https://github.com/LITTOMA/RadialGauge"
+        },
+        {
+            "name": "WinFormsMarkup",
+            "desc": "WinForms UI 的声明式标记扩展库。",
+            "link": "https://github.com/LITTOMA/WinFormsMarkup"
+        },
+        {
+            "name": "SwiftIO",
+            "desc": "一个用Swift语言编写、模仿C# System.IO风格的工具库。",
+            "link": "https://github.com/LITTOMA/SwiftIO"
+        },
+        {
+            "name": "fabrc",
+            "desc": "用于解析宝可梦艺术学院（Pokemon Art Academy）Fab资源的脚本。",
+            "link": "https://github.com/LITTOMA/fabrc"
+        }
+    ]
+}

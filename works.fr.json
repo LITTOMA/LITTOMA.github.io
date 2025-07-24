@@ -1,0 +1,34 @@
+{
+    "works": [
+        {
+            "name": "Avalonia.MarkdownViewer",
+            "desc": "Contrôle de rendu Markdown pour Avalonia UI.",
+            "link": "https://github.com/LITTOMA/Avalonia.MarkdownViewer"
+        },
+        {
+            "name": "ModbusParser",
+            "desc": "Outil d'analyse et de décodage du protocole Modbus.",
+            "link": "https://github.com/LITTOMA/ModbusParser"
+        },
+        {
+            "name": "RadialGauge",
+            "desc": "Contrôle de jauge radiale haute performance, multiplateforme.",
+            "link": "https://github.com/LITTOMA/RadialGauge"
+        },
+        {
+            "name": "WinFormsMarkup",
+            "desc": "Extension de balisage déclaratif pour WinForms UI.",
+            "link": "https://github.com/LITTOMA/WinFormsMarkup"
+        },
+        {
+            "name": "SwiftIO",
+            "desc": "Bibliothèque d'outils en Swift inspirée du style System.IO de C#.",
+            "link": "https://github.com/LITTOMA/SwiftIO"
+        },
+        {
+            "name": "fabrc",
+            "desc": "Scripts pour analyser les ressources Fab du jeu Pokémon Art Academy.",
+            "link": "https://github.com/LITTOMA/fabrc"
+        }
+    ]
+}
