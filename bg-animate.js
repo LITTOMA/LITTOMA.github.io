@@ -116,7 +116,7 @@
         }
     }
     // 爆炸相关参数
-    const CLUSTER_EXPLODE_N = 6; // 团内粒子数超过此值触发爆炸
+    const CLUSTER_EXPLODE_N = 5; // 团内粒子数超过此值触发爆炸
     const EXPLODE_DIST = 120; // 爆炸后粒子飞出的距离
 
     // 查找所有粒子团（连通分量）
