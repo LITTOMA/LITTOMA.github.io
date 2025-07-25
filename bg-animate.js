@@ -29,12 +29,26 @@
     resize();
 
     // 物理模拟参数：引力场粒子运动
-    const PARTICLE_COUNT = 36;
+    let PARTICLE_COUNT = 36;
     const PARTICLE_RADIUS = 2.2;
     const LINK_DIST = 120;
     const TRAIL_LENGTH = 18;
+    let CLUSTER_EXPLODE_N = 5; // 爆炸阈值，后续会根据屏幕宽度调整
     let particles = [];
+    function adjustParamsForScreen() {
+        if (window.innerWidth < 600) {
+            PARTICLE_COUNT = 8;
+            CLUSTER_EXPLODE_N = 4;
+        } else if (window.innerWidth < 900) {
+            PARTICLE_COUNT = 24;
+            CLUSTER_EXPLODE_N = 7;
+        } else {
+            PARTICLE_COUNT = 36;
+            CLUSTER_EXPLODE_N = 5;
+        }
+    }
     function initParticles() {
+        adjustParamsForScreen();
         particles = [];
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             particles.push({
@@ -116,7 +130,6 @@
         }
     }
     // 爆炸相关参数
-    const CLUSTER_EXPLODE_N = 5; // 团内粒子数超过此值触发爆炸
     const EXPLODE_DIST = 120; // 爆炸后粒子飞出的距离
 
     // 查找所有粒子团（连通分量）
