@@ -142,7 +142,7 @@
             max-width: 800px;
             width: 100%;
             background: #fff;
-            border-radius: 12px;
+            border-radius: 32px 32px 28px 28px / 32px 32px 28px 28px;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
             padding: 32px 24px;
         }
@@ -168,6 +168,10 @@
             margin-bottom: 24px;
         }
 
+        .intro.dark {
+            color: #bfc8d6;
+        }
+
         .section {
             margin-bottom: 32px;
         }
@@ -191,7 +195,7 @@
 
         .work-card {
             background: #f4f6fb;
-            border-radius: 10px;
+            border-radius: 32px 32px 28px 28px / 32px 32px 28px 28px;
             box-shadow: 0 2px 8px rgba(42, 122, 226, 0.08);
             padding: 20px 18px;
             min-width: 220px;
@@ -217,6 +221,10 @@
         .work-desc {
             color: #555;
             margin-bottom: 4px;
+        }
+
+        .work-desc.dark {
+            color: #bfc8d6;
         }
 
         .contact {
@@ -273,6 +281,8 @@
             document.querySelectorAll('.contact a').forEach(el => el.classList.toggle('dark', mode === 'dark'));
             document.querySelector('.lang-select-wrapper').classList.toggle('dark', mode === 'dark');
             document.getElementById('theme-toggle').textContent = mode === 'dark' ? '☀️' : '🌙';
+            document.querySelectorAll('.intro').forEach(el => el.classList.toggle('dark', mode === 'dark'));
+            document.querySelectorAll('.work-desc').forEach(el => el.classList.toggle('dark', mode === 'dark'));
         }
 
         // 检测系统主题
