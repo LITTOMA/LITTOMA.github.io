@@ -115,7 +115,62 @@
             ctx.globalAlpha = 1;
         }
     }
+    // 爆炸相关参数
+    const CLUSTER_EXPLODE_N = 6; // 团内粒子数超过此值触发爆炸
+    const EXPLODE_DIST = 120; // 爆炸后粒子飞出的距离
+
+    // 查找所有粒子团（连通分量）
+    function findClusters() {
+        const visited = new Array(PARTICLE_COUNT).fill(false);
+        const clusters = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            if (visited[i]) continue;
+            // BFS 查找与 i 连通的所有粒子
+            const queue = [i];
+            const cluster = [i];
+            visited[i] = true;
+            while (queue.length) {
+                const cur = queue.shift();
+                for (let j = 0; j < PARTICLE_COUNT; j++) {
+                    if (visited[j] || cur === j) continue;
+                    const dx = particles[cur].x - particles[j].x;
+                    const dy = particles[cur].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < LINK_DIST) {
+                        visited[j] = true;
+                        queue.push(j);
+                        cluster.push(j);
+                    }
+                }
+            }
+            if (cluster.length > 1) clusters.push(cluster);
+        }
+        return clusters;
+    }
+
+    function explodeCluster(cluster) {
+        // 给团内每个粒子一个随机方向和距离
+        for (const idx of cluster) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = EXPLODE_DIST * (0.7 + 0.6 * Math.random());
+            particles[idx].vx += Math.cos(angle) * dist * 0.08;
+            particles[idx].vy += Math.sin(angle) * dist * 0.08;
+            particles[idx].x += Math.cos(angle) * dist;
+            particles[idx].y += Math.sin(angle) * dist;
+            // 保证粒子不出界
+            particles[idx].x = Math.max(0, Math.min(W, particles[idx].x));
+            particles[idx].y = Math.max(0, Math.min(H, particles[idx].y));
+        }
+    }
+
     function tick() {
+        // 检查爆炸团
+        const clusters = findClusters();
+        for (const cluster of clusters) {
+            if (cluster.length >= CLUSTER_EXPLODE_N) {
+                explodeCluster(cluster);
+            }
+        }
         // 物理模拟：引力场+边界反弹
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             let ax = 0, ay = 0;
